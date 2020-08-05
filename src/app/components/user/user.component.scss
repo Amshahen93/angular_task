@@ -1,0 +1,63 @@
+.table-body{
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.tools-title{
+  width: 100px;
+}
+
+.background{
+  background-color: white;
+  border-radius: 10px;
+}
+
+.min-width{
+  min-width: 800px;
+}
+
+.table-body{
+  height: 500px !important;
+  overflow-y: auto;
+}
+
+.border-left{
+  border-left: var(--purple) 1px solid !important;
+}
+
+.border-right{
+  border-right: var(--purple) 1px solid !important;
+}
+
+.border-left-right{
+  border-left: var(--purple) 1px solid;
+  border-right: var(--purple) 1px solid;
+}
+
+.border-bottom{
+  border-bottom: var(--purple) 1px solid !important;
+}
+
+.space{
+  height: 20px;
+  border-top: 3px var(--purple) solid;
+  border-bottom: 3px var(--purple) solid;
+}
+
+.border{
+  border: solid 3px var(--purple) !important;
+}
+.Passed td {
+  background-color: var(--danger);
+  color: white;
+}
+
+.Doing td {
+  background-color: var(--success);
+  color: white;
+}
+
+.Done td {
+  background-color: var(--primary);
+  color: white;
+}

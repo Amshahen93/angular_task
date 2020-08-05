@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-2 pr-4 pl-4">
+      <div class="row">
+        <div class="col-12 background pt-2 pb-2">
+          <table class="w-100 min-width border" *ngIf="planingList">
+            <thead>
+              <tr [formGroup]="filterForm">
+                <td *ngFor="let column of tableColumns; let first = first; let last = last;"
+                [ngClass]="{'border-left': first, 'border-right': last, 'border-left-right': !first && !last}">
+                  <div *ngIf="column.formControlName" class="pr-2 pl-2">
+                    <mat-form-field class="w-100" *ngIf="column.formControlName !== 'status'">
+                      <input matInput [placeholder]="column.placeholder" autocomplete="off" [formControlName]="column.formControlName">
+                    </mat-form-field>
+                    <mat-form-field *ngIf="column.formControlName === 'status'">
+                      <mat-label>{{column.placeholder}}</mat-label>
+                      <mat-select [formControlName]="column.formControlName">
+                        <mat-option value="">all</mat-option>
+                        <mat-option [value]="status" *ngFor="let status of statuses">
+                          {{status}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td class="">
+                  <div class="w-100 text-center">
+                    <button mat-raised-button color="primary">New</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="space" colspan="7"></td>
+              </tr>
+              <tr>
+                <td *ngFor="let column of tableColumns; let first = first; let last = last;" class="border-bottom"
+                [ngClass]="{'border-left': first, 'border-right': last, 'border-left-right': !first && !last}">
+                  <div class="text-center pr-2 pt-2 pb-2">
+                    {{column.title}}
+                  </div>
+                </td>
+                <td class="tools-title border-bottom">
+                  <div class="text-center">
+                    Tools
+                  </div>
+                </td>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <ng-container *ngIf="planingList">
+                <tr *ngFor="let item of planingList.table_data | filterBy: filterValue" [ngClass]="[item.status]">
+                  <td *ngFor="let column of tableColumns; let first = first; let last = last;" class="border-bottom"
+                  [ngClass]="{'border-left': first, 'border-right': last, 'border-left-right': !first && !last}">
+                    <div class="pl-2" *ngIf="column.keyword !== 'date'">
+                      {{item[column.keyword]}}
+                    </div>
+                    <div class="pl-2" *ngIf="column.keyword === 'date'">
+                      {{item[column.keyword] | date: 'yyyy: MM: dd'}}
+                    </div>
+                  </td>
+                  <td class="border-bottom"></td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center mt-5 pt-5">
+      <mat-card class="login-card pt-4 pb-4 pr-5 pl-5 mt-5">
+        <form [formGroup]="loginForm">
+          <h1 class="text-center">Login</h1>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-icon *ngIf="loginForm.get('email').errors && loginForm.get('email').touched" color="warn" matSuffix>
+              sentiment_very_dissatisfied
+            </mat-icon>
+            <mat-icon *ngIf="!loginForm.get('email').errors || !loginForm.get('email').touched" color="primary" matSuffix>
+              sentiment_very_satisfied
+            </mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Enter your password</mat-label>
+            <input matInput placeholder="password" type="password" formControlName="password">
+            <mat-icon *ngIf="loginForm.get('password').errors && loginForm.get('password').touched" color="warn" matSuffix>
+              sentiment_very_dissatisfied
+            </mat-icon>
+            <mat-icon *ngIf="!loginForm.get('password').errors || !loginForm.get('password').touched" color="primary" matSuffix>
+              sentiment_very_satisfied
+            </mat-icon>
+          </mat-form-field>
+          <mat-checkbox formControlName="remember">Remember</mat-checkbox>
+          <div class="text-center">
+            <button mat-raised-button class="mt-4 pr-4 pl-4" color="primary" (click)="onLogin()">Login</button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
